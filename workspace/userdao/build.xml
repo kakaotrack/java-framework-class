@@ -1,0 +1,64 @@
+<project name="userdao" basedir=".">
+	<property name="dist.path" value="dist" />
+	<property name="classes.path" value="${dist.path}/classes" />
+	<property name="testclasses.path" value="${dist.path}/testclasses" />
+	<property name="src.path" value="src" />
+	<property name="test.src.path" value="test" />
+	<property name="lib.path" value="lib" />
+	
+	<path id="project.lib.path">
+		<fileset dir="${lib.path}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+
+	<path id="project.class.path">
+		<pathelement path="${classes.path}"/>
+	</path>
+	
+	<path id="test.class.path">
+		<pathelement path="${testclasses.path}"/>
+	</path>
+
+    <target name="clean">
+    	<delete dir="${classes.path}" />
+    	<delete dir="${testclasses.path}" />
+    	<mkdir dir="${classes.path}"/>
+    	<mkdir dir="${testclasses.path}"/>
+    </target>
+
+	<target name="compile" depends="clean">
+		<javac srcdir="${src.path}" destdir="${classes.path}" encoding="utf-8">
+			<classpath refid="project.lib.path" />
+		</javac>
+		<copy todir="${classes.path}" file="${src.path}/daoFactory.xml"/>
+	</target>
+
+	<target name="test" depends="compile">
+		<javac srcdir="${test.src.path}" encoding="utf-8" destdir="${testclasses.path}" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+			<classpath refid="project.lib.path" />
+		</javac>
+	    <junit printsummary="yes" haltonfailure="yes">
+			<classpath refid="project.class.path" />
+			<classpath refid="project.lib.path" />
+			<classpath refid="test.class.path" />
+
+	      	<formatter type="plain"/>
+	      	<formatter type="xml"/>
+	    	
+
+	      	<batchtest fork="yes" todir="${testclasses.path}">
+	        	<fileset dir="${test.src.path}">
+	         	 	<include name="**/*Test*.java"/>
+	        	</fileset>
+	      	</batchtest>
+	    </junit>
+	</target>
+	<target name="jar" depends="test">
+		<jar jarfile="${dist.path}/${ant.project.name}.jar" basedir="${classes.path}" />
+	</target>
+	<target name="deploy"></target>
+
+</project>
