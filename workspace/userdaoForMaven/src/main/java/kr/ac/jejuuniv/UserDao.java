@@ -1,62 +1,17 @@
 package kr.ac.jejuuniv;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+public interface UserDao {
 
-public class UserDao {
+	public abstract User get(String id);
 
-	private JdbcTemplate jdbcTemplate;
+	public abstract void add(User user);
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
+	public abstract void delete(String id);
 
-	public UserDao() {
-	}
+	public abstract List<User> findAll();
 
-	public User get(final String id) {
-		String query = "select id, name, password from userinfo where id = ?";
-		String[] params = new String[] { id };
-		User queryForObject;
-		try {
-			queryForObject = jdbcTemplate.queryForObject(query, params, new RowMapper<User>() {
-
-				@Override
-				public User mapRow(ResultSet resultSet, int rownum) throws SQLException {
-					User user = new User();
-					user.setId(resultSet.getString("id"));
-					user.setName(resultSet.getString("name"));
-					user.setPassword(resultSet.getString("password"));
-					return user;
-				}
-				
-			});
-		} catch (EmptyResultDataAccessException e) {
-			return null;
-		}
-		return queryForObject;
-	}
-
-	public void add(final User user) {
-		final String query = "insert into userinfo(id, name, password) values (? , ? , ?)";
-		final String[] params = new String[] { user.getId(), user.getName(), user.getPassword() };
-		jdbcTemplate.update(query, params);
-	}
-
-	public void delete(final String id) {
-		final String query = "delete from userinfo where id = ?";
-		final String[] params = new String[] { id };
-		jdbcTemplate.update(query, params);
-	}
-
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+	public abstract void deleteTestData(String name, String password) throws Exception;
 
 }

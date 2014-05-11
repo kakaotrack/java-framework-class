@@ -33,9 +33,12 @@ public class JdbcContext {
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = dataSource.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = statementStrategy.makeStatement(connection);
 			preparedStatement.executeUpdate();
+			connection.commit();
 		} catch (SQLException e) {
+			connection.rollback();
 			e.printStackTrace();
 			throw e;
 		} finally {
