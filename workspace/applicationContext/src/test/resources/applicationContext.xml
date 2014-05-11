@@ -4,9 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<bean id="hello" class="kr.ac.jejuuniv.HelloImpl" />
 	
-	<bean id="helloPrinter" class="kr.ac.jejuuniv.HelloPrinterImpl">
+	<bean id="helloPrinter" class="kr.ac.jejuuniv.HelloPrinterImpl" autowire="byName">
 		<property name="name" value="허윤호" />
-		<property name="hello" ref="hello" />
 	</bean>
 	
 </beans>
