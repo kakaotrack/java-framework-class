@@ -2,8 +2,10 @@ package kr.ac.jejuuniv;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
@@ -16,14 +18,16 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class UserDaoTest {
 	private String name;
 	private String password;
-	private UserDaoTx userDao;
+	private UserDao userDao;
 	
 	@Before
 	public void setup() {
 		name = "허윤호";
 		password = "1111";
 		ApplicationContext context = new GenericXmlApplicationContext("daoFactory.xml");
-		userDao = context.getBean("userDao", UserDaoTx.class);
+		userDao = context.getBean("userDao", UserDao.class);
+//		InvocationHandler transactionHandler = context.getBean("transactionHandler", InvocationHandler.class);
+//		userDao = (UserDao) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{UserDao.class}, transactionHandler);
 	}
 
 	@Test
@@ -100,9 +104,33 @@ public class UserDaoTest {
 		try {
 			userDao.deleteTestData(name, password);
 		} catch (NullPointerException e) {
+		} catch (InvocationTargetException e) {
 		}
 		assertNotNull(userDao.get(successId));
 	}
+	
+	
+	@Test
+	public void failTransaction() throws Exception {
+		String successId = "11" + new Random().nextInt(10000);
+		User user = new User();
+		user.setId(successId);
+		user.setName(name);
+		user.setPassword(password);
+		userDao.add(user);
+		String failId = "21" + new Random().nextInt(10000);
+		user = new User();
+		user.setId(failId);
+		user.setName(name);
+		userDao.add(user);
+		try {
+			userDao.removeTestData(name, password);
+		} catch (NullPointerException e) {
+		} catch (InvocationTargetException e) {
+		}
+		assertNull(userDao.get(successId));
+	}
+	
 	
 	@Test
 	public void reflectionTest() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {

@@ -1,29 +1,28 @@
 package kr.ac.jejuuniv;
 
-import java.util.List;
-
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-public class UserDaoTx implements UserDao {
-
+public class TransactionAdvice implements MethodInterceptor{
 	private PlatformTransactionManager transactionManager;
-	private UserDao userDao;
 
-	public UserDaoTx() {
-	}
-
-	public void deleteTestData(String name, String password) throws Exception {
+	@Override
+	public Object invoke(MethodInvocation invocation) throws Throwable  {
+		Object object = null;
 		TransactionStatus status = getTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getUserDao().deleteTestData(name, password);
+			object = invocation.proceed();
 			getTransactionManager().commit(status);
 		} catch (Exception e) {
 			getTransactionManager().rollback(status);
 			throw e;
-		} 
+		}
+		return object;
 	}
+
 	public PlatformTransactionManager getTransactionManager() {
 		return transactionManager;
 	}
@@ -31,33 +30,4 @@ public class UserDaoTx implements UserDao {
 	public void setTransactionManager(PlatformTransactionManager transactionManager) {
 		this.transactionManager = transactionManager;
 	}
-
-	@Override
-	public User get(String id) {
-		return getUserDao().get(id);
-	}
-
-	@Override
-	public void add(User user) {
-		getUserDao().add(user);
-	}
-
-	@Override
-	public void delete(String id) {
-		getUserDao().delete(id);
-	}
-
-	@Override
-	public List<User> findAll() {
-		return getUserDao().findAll();
-	}
-
-	public UserDao getUserDao() {
-		return userDao;
-	}
-
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-
 }

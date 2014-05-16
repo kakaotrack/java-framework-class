@@ -5,13 +5,47 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:annotation-config />
-	<bean id="userDao" class="kr.ac.jejuuniv.UserDaoTx">
+<!-- 	<bean id="userDao" class="kr.ac.jejuuniv.UserDaoTx">
 		<property name="userDao" ref="userDaoImpl"></property>
 		<property name="transactionManager" ref="transactionManager"></property>
-	</bean>
+	</bean> -->
 	<bean id="userDaoImpl" class="kr.ac.jejuuniv.UserDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	<bean id="userDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames">
+			<list>
+				<value>transactionAdvisor</value>
+			</list>
+		</property>
+		<property name="target" ref="userDaoImpl" />
+	</bean>
+	
+	<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<array>
+				<value>add*</value>
+				<value>delete*</value>
+			</array>
+		</property>
+	</bean>
+	
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice"></property>
+		<property name="pointcut" ref="transactionPointcut"></property>
+	</bean>
+	
+	<bean id="transactionAdvice" class="kr.ac.jejuuniv.TransactionAdvice" />
+	
+<!-- 	<bean id="transactionHandler" class="kr.ac.jejuuniv.TransactionInvocationHandler">
+		<property name="target" ref="userDaoImpl" />
+		<property name="patterns">
+			<array>
+				<value>add</value>
+				<value>delete</value>
+			</array>
+		</property>
+	</bean> -->
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>

@@ -82,6 +82,11 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
+	@Override
+	public void removeTestData(String name, String password) throws Exception {
+		deleteTestData(name, password);
+	}
+
 
 
 }

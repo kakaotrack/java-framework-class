@@ -14,4 +14,6 @@ public interface UserDao {
 
 	public abstract void deleteTestData(String name, String password) throws Exception;
 
+	public abstract void removeTestData(String name, String password) throws Exception;
+
 }
