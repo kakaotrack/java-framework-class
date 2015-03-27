@@ -9,8 +9,8 @@
 
 	<context:component-scan base-package="kr.ac.jejuuniv" />
 
-	<bean
-		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+<!-- 	<bean
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" /> -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping" 
 		/> -->
 	<bean name="/helloworld" class="kr.ac.jejuuniv.HelloWorldServlet" />
@@ -53,7 +53,14 @@
 	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
 
 
-	<!-- <mvc:annotation-driven /> -->
+	<mvc:annotation-driven />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*"/>
+			<bean class="kr.ac.jejuuniv.HelloInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
