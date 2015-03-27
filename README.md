@@ -42,3 +42,23 @@ This class was started in 2008 as a co-work class with Daum Communications and J
 * 14주 Spring MVC 고급 Spring MVC 고급 및 기말 프로젝트 실습
 * 15주 Spring MVC 고급 Spring MVC 고급 및 기말 프로젝트 실습
 * 16주 기말고사 프로젝트 발표 
+* 
+
+## 동영상 순서
+userDao_get1.mov
+userDao_get2.mov
+userDao_add.mov
+userDao_refactoring1.mov
+userDao_factorymethodpattern.mov
+userDao_strategypattern.mov
+DaoFactory.mov
+SpringDaoFactory1.mov
+SpringDaoFactory2.mov
+DataSource.mov
+userDao_exception.mov
+userDao_delete.mov
+userDao_makestatement.mov
+jdbcContext.mov
+template_callback.mov
+jdbcTemplate1.mov
+jdbcTemplate2.mov
