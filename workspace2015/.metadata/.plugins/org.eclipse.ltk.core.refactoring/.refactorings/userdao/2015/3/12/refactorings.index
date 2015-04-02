@@ -1,7 +1,0 @@
-1426836979252	Encapsulate field 'id'
-1426836982852	Encapsulate field 'name'
-1426836987504	Encapsulate field 'password'
-1426840705272	Extract method 'getConnection'
-1426843679041	Delete elements
-1426843801527	Extract interface 'ConnectionMaker'
-1426843854737	Rename type 'SimpleConnectionMaker'

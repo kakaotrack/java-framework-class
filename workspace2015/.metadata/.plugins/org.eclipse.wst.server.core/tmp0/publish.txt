@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Fri Mar 20 16:22:13 KST 2015
-org.eclipse.jst.jee.server\:/binary\:/daum/jeju2015/user/WebContent/WEB-INF/lib/spring-web-4.1.5.RELEASE.jar=WEB-INF/lib/spring-web-4.1.5.RELEASE.jar

@@ -1,7 +1,0 @@
-1427343906597	Delete element
-1427440665600	Convert local variable 'userDao' to field
-1427441052838	Rename method 'getUserDao'
-1427441081335	Extract method 'connectionMaker'
-1427441761351	Delete element
-1427444431571	Rename field 'connectionMaker'
-1427444930586	Delete elements
