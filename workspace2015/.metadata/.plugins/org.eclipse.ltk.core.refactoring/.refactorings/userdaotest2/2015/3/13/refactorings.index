@@ -1,0 +1,24 @@
+1427418829784	Extract method 'connectionMaker'
+1427418851447	Rename method 'getUserDao'
+1427419465042	Convert local variable 'userDao' to field
+1427419531765	Convert local variable 'id' to field
+1427419548779	Convert local variable 'name' to field
+1427419565413	Convert local variable 'password' to field
+1427419916371	Rename method 'getUserDao'
+1427419940549	Extract method 'connectionMaker'
+1427420163125	Delete element
+1427421427733	Rename field 'connectionMaker'
+1427421457528	Encapsulate field 'dataSource'
+1427422350350	Extract method 'addTestUser'
+1427422370764	Change method 'addTestUser'
+1427422557264	Delete elements
+1427422623256	Extract method 'makeStatement'
+1427423622404	Change method 'makeStatement'
+1427430642864	Extract method 'jdbcContextWithStatementStrategyForUpdate'
+1427430678758	Extract method 'jdbcContextWithStatementStrategyForSelect'
+1427430783135	Extract Class...
+1427430810607	Delete element
+1427431041920	Rename local variable 'dataSource'
+1427431478500	Delete elements
+1427432285524	Extract method 'update'
+1427432392252	Rename field 'jdbcContext'

@@ -1,0 +1,14 @@
+1427344003497	Convert local variable 'userDao' to field
+1427344309046	Extract method 'getConnectionMaker'
+1427344472410	Delete element
+1427344658207	Rename method 'getConnectionMaker'
+1427354735852	Rename field 'connectionMaker'
+1427354750145	Rename local variable 'connectionMaker'
+1427354782078	Delete element
+1427354899734	Delete element
+1427355110979	Delete element
+1427355800929	Delete elements
+1427356363968	Extract method 'addTestUser'
+1427357511493	Extract method 'makeStatement'
+1427357957645	Rename type 'MakeStatementStrategy'
+1427418870234	Copy files

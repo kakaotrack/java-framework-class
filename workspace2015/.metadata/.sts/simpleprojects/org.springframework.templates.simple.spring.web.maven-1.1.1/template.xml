@@ -1,0 +1,15 @@
+<template>
+	<descriptor id="org.springframework.templates.simple.spring.web.maven"
+		name="Simple Spring Web Maven"
+		kind="template"
+		requiresbundle="org.eclipse.m2e.core"
+		category="Simple Projects"
+		springversion="3.2.3.RELEASE"
+		version="1.1.1">
+		<description>
+			Creates a simple Spring web project using Maven that contains a basic set of Spring web libraries.
+		</description>
+	</descriptor>
+	<project path="template.zip"/>
+	<json path="wizard.json"/>
+</template>

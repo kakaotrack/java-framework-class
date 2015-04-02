@@ -1,0 +1,3 @@
+content.descriptors=spring-defaults|http\://dist.springsource.com/release/STS/help/descriptors-3.0.xml\nspring-data-gemfire|https\://raw.github.com/SpringSource/spring-data-gemfire-sts-templates/master/builds/descriptor.xml\nspring-integration|https\://raw.github.com/SpringSource/spring-integration-templates/master/si-sts-templates/builds/descriptor.xml\n
+dashboard.feeds.blogs=https\://spring.io/blog.atom
+eclipse.preferences.version=1

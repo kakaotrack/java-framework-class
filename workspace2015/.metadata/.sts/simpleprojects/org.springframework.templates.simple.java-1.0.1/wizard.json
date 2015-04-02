@@ -1,0 +1,18 @@
+{
+	"info" : {
+		"elements" : {
+		
+		},
+
+		"projectName" : "SimpleJava",
+
+		"pages" : {
+			"page" : [
+					{
+					"order" : 0,
+					"description" : "Project Settings"
+				}
+			]
+		}
+	}
+}

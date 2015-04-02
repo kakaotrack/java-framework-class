@@ -1,0 +1,18 @@
+{
+	"info" : {
+		"elements" : {
+	
+		},
+
+		"projectName" : "spring-web-project",
+
+		"pages" : {
+			"page" : [
+					{
+					"order" : 0,
+					"description" : "Project Settings"
+				}
+			]
+		}
+	}
+}

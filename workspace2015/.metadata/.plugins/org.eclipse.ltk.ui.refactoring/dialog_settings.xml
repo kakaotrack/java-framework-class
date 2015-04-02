@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="RefactoringStatusDialog">
+		<item value="800" key="DIALOG_WIDTH"/>
+		<item value="472" key="DIALOG_HEIGHT"/>
+		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="ExtractTempWizard">
+		<item value="true" key="replaceOccurrences"/>
+		<item value="false" key="declareFinal"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item value="380" key="height"/>
+		<item value="580" key="width"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="true" key="CREATE_TOPLEVEL"/>
+		<item value="false" key="deleteSubPackages"/>
+		<item value="false" key="CREATE_GETTER_SETTER"/>
+	</section>
+</section>

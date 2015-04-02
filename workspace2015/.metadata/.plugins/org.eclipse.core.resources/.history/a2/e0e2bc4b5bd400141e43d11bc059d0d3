@@ -1,0 +1,32 @@
+package kr.ac.jejuuniv;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import com.mysql.jdbc.Driver;
+
+public class DConnectionMaker extends SimpleDriverDataSource {
+	
+	public DConnectionMaker() {
+		this.setDriverClass(Driver.class);
+		this.setUrl("jdbc:mysql://localhost/jeju?characterEncoding=utf-8");
+		this.setUsername("jeju");
+		this.setPassword("jejupw");
+	}
+//
+//	/* (non-Javadoc)
+//	 * @see kr.ac.jejuuniv.ConnectionMaker#getConnection()
+//	 */
+//	@Override
+//	public Connection getConnection() throws ClassNotFoundException, SQLException {
+//		Class.forName("com.mysql.jdbc.Driver");
+//		Connection connection = DriverManager.getConnection("jdbc:mysql://113.198.164.228/jeju?characterEncoding=utf-8", "jeju", "jejupw");
+//		return connection;
+//	}
+
+}

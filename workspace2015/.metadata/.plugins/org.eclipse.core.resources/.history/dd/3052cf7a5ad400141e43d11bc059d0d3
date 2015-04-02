@@ -1,0 +1,21 @@
+package kr.ac.jejuuniv;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+public class DConnectionMaker implements DataSource {
+//
+//	/* (non-Javadoc)
+//	 * @see kr.ac.jejuuniv.ConnectionMaker#getConnection()
+//	 */
+//	@Override
+//	public Connection getConnection() throws ClassNotFoundException, SQLException {
+//		Class.forName("com.mysql.jdbc.Driver");
+//		Connection connection = DriverManager.getConnection("jdbc:mysql://113.198.164.228/jeju?characterEncoding=utf-8", "jeju", "jejupw");
+//		return connection;
+//	}
+
+}
