@@ -11,10 +11,10 @@
 	</bean>
 
 	<bean id="userDao" class="kr.ac.jejuuniv.UserDao">
-		<property name="jdbcContext" ref="jdbcContext" />
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
-	<bean id="jdbcContext" class="kr.ac.jejuuniv.JdbcContext">
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 

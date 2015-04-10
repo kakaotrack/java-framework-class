@@ -11,6 +11,20 @@ public class JdbcContext {
 	
 	private DataSource dataSource;
 
+	public void update(final String sql, final String[] params) throws SQLException {
+		StatementStrategy statementStrategy = new StatementStrategy() {
+			@Override
+			public PreparedStatement makeStatement(Connection connection) throws SQLException {
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				for (int i = 1; i <= params.length; i++) {
+					preparedStatement.setString(i, params[i - 1]);
+				}
+				return preparedStatement;
+			}
+		};
+		jdbcContextWithStatementStrategyForUpdate(statementStrategy);
+	}
+
 
 	public User jdbcContextWithStatementStrategyForSelect(StatementStrategy statementStrategy) throws SQLException {
 		Connection connection = null;
