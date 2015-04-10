@@ -22,9 +22,8 @@ public class UserDao {
 		User user = null;
 		try {
 			connection = dataSource.getConnection();
-			String sql = "select id, name, password from userinfo where id = ?";
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, id);
+			StatementStrategy statementStrategy = new GetUserStatementStrategy();
+			preparedStatement = statementStrategy.makeStatement(id, connection);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				user = new User();
@@ -63,11 +62,8 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String sql = "insert into userinfo(id, name, password) values (?, ?, ?)";
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, user.getId());
-			preparedStatement.setString(2, user.getName());
-			preparedStatement.setString(3, user.getPassword());
+			StatementStrategy statementStrategy = new AddUserStatementStrategy();
+			preparedStatement = statementStrategy.makeStatement(user, connection);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,10 +94,8 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = dataSource.getConnection();
-			String sql = "delete from userinfo where id = ?";
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, id);
-			preparedStatement.executeUpdate();
+			StatementStrategy statementStrategy = new DeleteUserStatementStrategy();
+			preparedStatement = statementStrategy.makeStatement(id, connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -121,5 +115,6 @@ public class UserDao {
 		}
 
 	}
+
 
 }
