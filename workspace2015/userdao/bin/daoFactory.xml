@@ -11,6 +11,10 @@
 	</bean>
 
 	<bean id="userDao" class="kr.ac.jejuuniv.UserDao">
+		<property name="jdbcContext" ref="jdbcContext" />
+	</bean>
+	
+	<bean id="jdbcContext" class="kr.ac.jejuuniv.JdbcContext">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
