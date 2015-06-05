@@ -1,6 +1,16 @@
 package kr.ac.jejuuniv;
 
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
+@Configurable
 public class User {
+	
+	@Autowired
+	private UserDao userDao;
+	
 	private String id;
 	private String name;
 	private String password;
@@ -21,5 +31,8 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public User get(String id) throws SQLException {
+		return userDao.get(id);
 	}
 }

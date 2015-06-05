@@ -1,0 +1,66 @@
+<project name="userdao" basedir="." default="jar">
+	<property name="project.title" value="userdao" />
+	<property name="dist.name" value="userdao" />
+	<property name="lib.path" value="lib" />
+	<property name="dist.path" value="dist" />
+	<property name="src.path" value="src" />
+	<property name="test.src.path" value="src" />
+	<property name="classes.path" value="${dist.path}/classes" />
+	<property name="test.classes.path" value="${dist.path}/tests" />
+
+	<path id="project.class.path">
+		<fileset dir="${lib.path}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="class.path">
+		<pathelement path="${classes.path}"/>
+	</path>
+	
+	<path id="test.class.path">
+		<pathelement path="${test.classes.path}"/>
+	</path>
+
+	<target name="compile">
+		<javac srcdir="${src.path}" encoding="utf-8" destdir="${classes.path}" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+		</javac>
+		<copyfile src="${src.path}/daoFactory.xml" dest="${classes.path}/daoFactory.xml"/>
+	</target>
+
+	<target name="clean" description="Prepare for clean build">
+		<delete dir="${classes.path}" />
+		<mkdir dir="${classes.path}" />
+		<delete dir="${test.classes.path}" />
+		<mkdir dir="${test.classes.path}" />
+		<delete file="${dist.path}/userdao.jar" />
+	</target>
+
+	<target name="jar" description="Create binary distribution" depends="test">
+		<jar jarfile="${dist.path}/${dist.name}.jar" basedir="${classes.path}" />
+	</target>
+
+	<target name="test" depends="clean, compile">
+		<javac srcdir="${test.src.path}" encoding="utf-8" destdir="${test.classes.path}" debug="true" debuglevel="lines,vars,source">
+			<classpath refid="project.class.path" />
+			<classpath refid="class.path" />
+		</javac>
+
+	    <junit printsummary="yes" haltonfailure="yes">
+			<classpath refid="project.class.path" />
+			<classpath refid="class.path" />
+			<classpath refid="test.class.path" />
+
+	      	<formatter type="plain"/>
+	      	<formatter type="xml"/>
+
+	      	<batchtest fork="yes" todir="${test.classes.path}">
+	        	<fileset dir="${test.src.path}">
+	         	 	<include name="**/*Test*.java"/>
+	        	</fileset>
+	      	</batchtest>
+	    </junit>
+
+	</target>
+</project>

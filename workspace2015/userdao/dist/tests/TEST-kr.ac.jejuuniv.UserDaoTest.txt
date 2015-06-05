@@ -1,0 +1,11 @@
+Testsuite: kr.ac.jejuuniv.UserDaoTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.841 sec
+------------- Standard Error -----------------
+log4j:WARN No appenders could be found for logger (org.springframework.core.env.StandardEnvironment).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+------------- ---------------- ---------------
+
+Testcase: delete took 0.705 sec
+Testcase: add took 0.051 sec
+Testcase: get took 0.036 sec

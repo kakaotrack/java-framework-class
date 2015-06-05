@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="lib/spring-tx-4.1.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-web-4.1.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-webmvc-4.1.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-instrument-4.1.5.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
