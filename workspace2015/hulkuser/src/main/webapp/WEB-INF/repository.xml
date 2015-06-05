@@ -21,7 +21,7 @@
 	</bean>
 
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.ac.jejuuniv.hulk.repository" />
+		<property name="basePackage" value="kr.ac.jejuuniv.hulk.dao" />
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 	</bean>
 

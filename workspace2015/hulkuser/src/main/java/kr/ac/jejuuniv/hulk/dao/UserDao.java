@@ -1,4 +1,4 @@
-package kr.ac.jejuuniv.hulk.repository;
+package kr.ac.jejuuniv.hulk.dao;
 
 import java.util.List;
 

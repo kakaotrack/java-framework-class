@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.ac.jejuuniv.hulk.dao.UserDao;
 import kr.ac.jejuuniv.hulk.model.User;
-import kr.ac.jejuuniv.hulk.repository.UserDao;
 
 @Service
 public class UserServiceImpl implements UserService {
