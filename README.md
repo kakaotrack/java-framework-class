@@ -4,7 +4,7 @@ This class was started in 2008 as a co-work class with Daum Communications and J
 
 ### 강의 교수
 * 허윤호
-* email : hyh0408@daumcorp.com
+* email : hulk.h@kakaocorp.com
 
 ## 강의 목표
 국내외 대부분의 인터넷 포털 서비스는 다수의 사용자들이 접속하는 서비스로서 대용량 처리를 기본으로 제공하기 위해 노력하고 있다. 
