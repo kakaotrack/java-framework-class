@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+version = '1.0'
+def springVersion = '4.1.5.RELEASE'
+def springGroup = 'org.springframework'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: springGroup, name: 'spring-core', version: springVersion
+    compile group: springGroup, name: 'spring-beans', version: springVersion
+    compile group: springGroup, name: 'spring-context', version: springVersion
+    compile group: springGroup, name: 'spring-aop', version: springVersion
+    compile group: springGroup, name: 'spring-aspects', version: springVersion
+    compile group: springGroup, name: 'spring-context-support', version: springVersion
+    compile group: springGroup, name: 'spring-expression', version: springVersion
+    compile group: springGroup, name: 'spring-instrument', version: springVersion
+    compile group: springGroup, name: 'spring-jdbc', version: springVersion
+    compile group: springGroup, name: 'spring-orm', version: springVersion
+    compile group: springGroup, name: 'spring-test', version: springVersion
+    compile group: springGroup, name: 'spring-tx', version: springVersion
+    compile group: springGroup, name: 'spring-web', version: springVersion
+    compile group: springGroup, name: 'spring-webmvc', version: springVersion
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.30' 
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
